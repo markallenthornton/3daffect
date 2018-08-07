@@ -100,7 +100,7 @@ sum(table(imdb$V2,imdb.14k>median(imdb.14k,na.rm=T))[c(1,4)])/length(imdb$V2)
 # yelp review sentences
 yelp <- read.table("./sentiment labelled sentences/yelp_labelled.txt",sep = "\t")
 yelp.3d <- unlist(lapply(yelp$V1,function(x) sentiment(x,tokens,dict[,3])))
-yelp.14k <- unlist(lapply(yelp$V1,function(x) sentiment(x,as.character(norms$Word),norms$V.Mean.Sum)))
+yelp.14k <- unlist(lapply(unlist(lapply(yelp$V1,tolower)),function(x) sentiment(x,as.character(norms$Word),norms$V.Mean.Sum)))
 cor(yelp$V2,yelp.3d)
 mean(is.na(yelp.14k))
 cor(yelp$V2,yelp.14k,use="pairwise.complete.obs")
