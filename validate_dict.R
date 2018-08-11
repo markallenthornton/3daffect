@@ -27,8 +27,9 @@ cor(sdict[,2],norms$A.Mean.Sum)
 # dominance vs. rationality
 cor(sdict[,3],norms$D.Mean.Sum)
 
-
-
+# plot valence
+plot(sdict[,3],norms$V.Mean.Sum,pch=20,xlab="SVM valence prediction",ylab="Valence ratings")
+abline(lm(norms$V.Mean.Sum~sdict[,3]))
 # validate sentences/passages ---------------------------------------------
 
 # validation data sets from here: https://archive.ics.uci.edu/ml/datasets/Sentiment+Labelled+Sentences
